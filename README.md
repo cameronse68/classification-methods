@@ -15,4 +15,4 @@ Install the method using `python setup.py install`
 Install the necessary requirements using `pip install -r requirements.txt`
 Run the tests using `python -m pytest -v`
 
-The example notebooks use the famous `iris.csv` dataset (located here https://www.kaggle.com/uciml/iris/version/2# as well as  in the data folder). 
+The example notebooks uses the famous `iris.csv` dataset (located here https://www.kaggle.com/uciml/iris/version/2# as well as  in the data folder). 
