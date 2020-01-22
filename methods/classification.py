@@ -2,9 +2,13 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn import preprocessing
-from evaluate import evaluate_classification
+from methods.evaluate import evaluate_classification
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
+import logging
+
+logger = logging.getLogger(__name__)
+logger.addHandler(logging.NullHandler())
 
 
 class Classification(object):
@@ -27,8 +31,15 @@ class Classification(object):
         self.df = df
         self.class_column = class_column
         self.split_level = split_level
-        self.x = self.df.drop(self.class_column, axis=1)
-        self.y = self.df[self.class_column]
+
+        try:
+            self.x = self.df.drop(self.class_column, axis=1)
+            self.y = self.df[self.class_column]
+        except (KeyError, Exception) as e:
+            logger.error("{}:".format(type(e)), exc_info=True)
+            logger.error("Column Name not in DataFrame")
+            raise
+
         self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(
             self.x, self.y, test_size=self.split_level)
         self.labels = labels
