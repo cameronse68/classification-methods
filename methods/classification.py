@@ -57,7 +57,7 @@ class Classification(object):
             cm(numpy.ndarray): the confusion matrix values
             roc_auc(in): the ROC value indicating classifier performance
         """
-        svclassifier = SVC(kernel='rbf', class_weight='balanced')
+        svclassifier = SVC(kernel=kernal, class_weight=class_weight)
         svclassifier.fit(self.x_train, self.y_train)
         y_pred_svc = svclassifier.predict(self.x_test)
         cm, roc_auc = evaluate_classification(
