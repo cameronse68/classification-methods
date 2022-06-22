@@ -15,7 +15,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        "numpy==1.17.2",
+        "numpy==1.22.0",
         "pandas==0.25.1",
         "pytest==5.2.1",
     ],
